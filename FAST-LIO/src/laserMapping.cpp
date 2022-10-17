@@ -1057,6 +1057,7 @@ int main(int argc, char **argv)
             double t_update_start = omp_get_wtime();
             double solve_H_time = 0;
             //迭代卡尔曼滤波更新，更新地图信息
+            // call h_share_model() //计算残差信息
             kf.update_iterated_dyn_share_modified(LASER_POINT_COV, solve_H_time);
             state_point = kf.get_x();
             euler_cur = SO3ToEuler(state_point.rot);
